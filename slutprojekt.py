@@ -181,12 +181,27 @@ def own_sort(numbers):
     only_strings = [inner[0] for inner in numbers]
     only_numbers = [inner[1] for inner in numbers]
     while only_numbers:
+        greatest = max(only_numbers)
+        greatest_number_index = only_numbers.index(greatest)
+        output.append([only_strings.pop(greatest_number_index), only_numbers.pop(greatest_number_index)])
 
-        biggest = max(only_numbers)
-        biggest_number_index = only_numbers.index(biggest)
-        output.append([only_strings.pop(biggest_number_index), only_numbers.pop(biggest_number_index)])
+    for items in output[0:10]:
+        print(items)
 
-    print(output)
     return output
+
+def search():
+    name_input = input('Vilket namn vill du söka efter? ')
+
+    sorted_list = load_and_sort()
+    for line in sorted_list:
+        if name_input in line:
+            return True
+    return False 
+
+if search():
+    print('True')
+else:
+    print('False')    
 #highscore()
-load_and_sort()
+#load_and_sort()
